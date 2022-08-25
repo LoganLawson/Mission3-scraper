@@ -5,7 +5,7 @@ import csv
 import time
 
 # globals
-main_link = 'https://www.carcomplaints.com'
+main_link = # add home link
 headers = {'User-agent': 'Mozilla/5.0'}
 
 def getModels(make):
@@ -62,7 +62,6 @@ def main(max_length=1000):
         write = csv.writer(f)
 
         while len(complaint_list) < 2:
-            print(f'Scraped {len(complaint_list)} complaints...')
             for make in makes:
                 try:
                     models = getModels(make)
@@ -83,8 +82,12 @@ def main(max_length=1000):
                         write.writerow([make] + [model] + [issue] + complaints)
                         complaint_list.extend(complaints)
                         time.sleep(2)
+                        print(f'Scraped {len(complaint_list)} complaints...')
     
-    print(f'Scrape complete. Scraped {len(cmplaint_list)} complaints')
+    print(f'Scrape complete. Scraped {len(complaint_list)} complaints')
     f.close()
 
     return complaint_list
+
+if __name__ == '__main__':
+    main()
